@@ -288,7 +288,11 @@ public class ClinicServiceImpl implements ClinicService {
 		return visitRepository.findByPetId(petId);
 	}
 	
-	
-
+	@Override
+	@Transactional(readOnly = true)
+    @Cacheable(value = "python")
+	public String callPython()  {
+		return "{ 'python': 'ok' }";
+	}	
 
 }

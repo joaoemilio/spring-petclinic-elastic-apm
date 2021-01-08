@@ -68,4 +68,5 @@ public interface ClinicService {
 	void saveSpecialty(Specialty specialty) throws DataAccessException;
 	void deleteSpecialty(Specialty specialty) throws DataAccessException;
 
+	String callPython();
 }

@@ -1,0 +1,60 @@
+curl 'http://localhost:8081/api/owners/1' \
+  -X 'PUT' \
+  -H 'Connection: keep-alive' \
+  -H 'sec-ch-ua: "Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"' \
+  -H 'Accept: application/json' \
+  -H 'traceparent: 00-11fc7391df267eb7a3c630df19e6f707-a878e763b94d6c71-01' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: http://localhost:8081' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: http://localhost:8081/owners/1/edit' \
+  -H 'Accept-Language: en,en-US;q=0.9,pt;q=0.8,pt-BR;q=0.7' \
+  --data-binary '{"id":1,"firstName":"George","lastName":"Franklin","address":"110 W. Liberty St.","city":"Madison","telephone":"6085551023","zipCode":"53701","state":"Wisconsin","pets":[{"id":1,"name":"Leo","birthDate":"2010/09/07","type":{"id":1,"name":"cat"},"owner":1,"visits":[]}]}' \
+  --compressed ;
+curl 'http://localhost:8081/api/owners/1' \
+  -H 'Connection: keep-alive' \
+  -H 'sec-ch-ua: "Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"' \
+  -H 'traceparent: 00-aaa69cf2def3c1f50165105de17ee079-9c08418cc193e8f4-01' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36' \
+  -H 'Accept: */*' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: http://localhost:8081/owners/1' \
+  -H 'Accept-Language: en,en-US;q=0.9,pt;q=0.8,pt-BR;q=0.7' \
+  --compressed ;
+curl 'https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com/intake/v2/rum/events' \
+  -H 'authority: e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com' \
+  -H 'sec-ch-ua: "Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36' \
+  -H 'content-type: application/x-ndjson' \
+  -H 'accept: */*' \
+  -H 'origin: http://localhost:8081' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: http://localhost:8081/' \
+  -H 'accept-language: en,en-US;q=0.9,pt;q=0.8,pt-BR;q=0.7' \
+  --data-binary $'{"metadata":{"service":{"name":"petclinic-react","version":"1.0.0","agent":{"name":"rum-js","version":"5.1.1"},"language":{"name":"javascript"}},"labels":{"0":"s","1":"u","2":"c","3":"c","4":"e","5":"s","6":"s","7":"_","8":"l","9":"o","10":"a","11":"d"}}}\n{"transaction":{"id":"48dbfad777798045","trace_id":"11fc7391df267eb7a3c630df19e6f707","name":"PUT /api/owners/1","type":"http-request","duration":12.959999993443489,"context":{"page":{"referer":"","url":"http://localhost:8081/owners/1/edit"},"user":{"username":"N/A","email":"N/A"}},"span_count":{"started":1},"sampled":true}}\n{"span":{"id":"a878e763b94d6c71","transaction_id":"48dbfad777798045","parent_id":"48dbfad777798045","trace_id":"11fc7391df267eb7a3c630df19e6f707","name":"PUT /api/owners/1","type":"external.truncated.truncated","subType":"http","start":0.5749999983236194,"duration":12.38499999511987}}\n' \
+  --compressed ;
+curl 'https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com/intake/v2/rum/events' \
+  -H 'authority: e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com' \
+  -H 'sec-ch-ua: "Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36' \
+  -H 'content-type: application/x-ndjson' \
+  -H 'accept: */*' \
+  -H 'origin: http://localhost:8081' \
+  -H 'sec-fetch-site: cross-site' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: http://localhost:8081/' \
+  -H 'accept-language: en,en-US;q=0.9,pt;q=0.8,pt-BR;q=0.7' \
+  --data-binary $'{"metadata":{"service":{"name":"petclinic-react","version":"1.0.0","agent":{"name":"rum-js","version":"5.1.1"},"language":{"name":"javascript"}},"labels":{"0":"s","1":"u","2":"c","3":"c","4":"e","5":"s","6":"s","7":"_","8":"l","9":"o","10":"a","11":"d"}}}\n{"error":{"id":"0a4643a3ddc306eb3ae95e0004f95bce","culprit":"index.js","exception":{"message":"Uncaught TypeError: Cannot read property \'startSpan\' of undefined","stacktrace":[{"abs_path":"http://localhost:8081/index.js","filename":"index.js","function":"startSpan","lineno":5926,"colno":60},{"abs_path":"http://localhost:8081/index.js","filename":"index.js","function":"<anonymous>","lineno":37573,"colno":49},{"abs_path":"http://localhost:8081/index.js","filename":"index.js","function":"onload","lineno":6417,"colno":13}],"type":"TypeError"},"context":{"page":{"referer":"","url":"http://localhost:8081/owners/1"},"user":{"username":"N/A","email":"N/A"}}}}\n{"transaction":{"id":"94cf4d7a31ae5dc8","trace_id":"aaa69cf2def3c1f50165105de17ee079","name":"GET /api/owners/1","type":"http-request","duration":8.474999994970858,"context":{"page":{"referer":"","url":"http://localhost:8081/owners/1"},"user":{"username":"N/A","email":"N/A"}},"span_count":{"started":1},"sampled":true}}\n{"span":{"id":"9c08418cc193e8f4","transaction_id":"94cf4d7a31ae5dc8","parent_id":"94cf4d7a31ae5dc8","trace_id":"aaa69cf2def3c1f50165105de17ee079","name":"GET /api/owners/1","type":"external.truncated.truncated","subType":"http","start":0.04499999340623617,"duration":8.430000001564622}}\n' \
+  --compressed

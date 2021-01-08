@@ -4,6 +4,7 @@ var apm = require('elastic-apm-node').start({
   serviceName: settings.apm_service_name,
   serviceVersion: settings.apm_service_version,
   serverUrl: settings.apm_server,
+  secretToken: "fUdDairnKQ5L6CUq8U",
   captureBody: "all",
   errorOnAbortedRequests: true,
   captureErrorLogStackTraces: "always",

@@ -1,0 +1,41 @@
+2021-01-08 14:40:18,122 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-01-08 14:40:18,172 INFO o.a.j.JMeter: Loading user properties from: /mnt/c/tools/apache-jmeter-5.4/bin/user.properties
+2021-01-08 14:40:18,177 INFO o.a.j.JMeter: Loading system properties from: /mnt/c/tools/apache-jmeter-5.4/bin/system.properties
+2021-01-08 14:40:18,187 INFO o.a.j.JMeter: Copyright (c) 1998-2020 The Apache Software Foundation
+2021-01-08 14:40:18,188 INFO o.a.j.JMeter: Version 5.4
+2021-01-08 14:40:18,188 INFO o.a.j.JMeter: java.version=11.0.9.1
+2021-01-08 14:40:18,189 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2021-01-08 14:40:18,189 INFO o.a.j.JMeter: os.name=Linux
+2021-01-08 14:40:18,190 INFO o.a.j.JMeter: os.arch=amd64
+2021-01-08 14:40:18,190 INFO o.a.j.JMeter: os.version=4.19.128-microsoft-standard
+2021-01-08 14:40:18,191 INFO o.a.j.JMeter: file.encoding=UTF-8
+2021-01-08 14:40:18,191 INFO o.a.j.JMeter: java.awt.headless=null
+2021-01-08 14:40:18,192 INFO o.a.j.JMeter: Max memory     =1073741824
+2021-01-08 14:40:18,192 INFO o.a.j.JMeter: Available Processors =8
+2021-01-08 14:40:18,203 INFO o.a.j.JMeter: Default Locale=English (EN)
+2021-01-08 14:40:18,205 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2021-01-08 14:40:18,205 INFO o.a.j.JMeter: JMeterHome=/mnt/c/tools/apache-jmeter-5.4
+2021-01-08 14:40:18,206 INFO o.a.j.JMeter: user.dir  =/mnt/c/git/spring-petclinic/loadgen
+2021-01-08 14:40:18,208 INFO o.a.j.JMeter: PWD       =/mnt/c/git/spring-petclinic/loadgen
+2021-01-08 14:40:18,209 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: DESKTOP-CP54KTB FullName: DESKTOP-CP54KTB.localdomain
+2021-01-08 14:40:18,400 INFO o.a.j.JMeter: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2021-01-08 14:40:18,795 ERROR o.a.j.JMeter: An error occurred: 
+java.awt.HeadlessException: 
+No X11 DISPLAY variable was set, but this program performed an operation which requires it.
+	at java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:208) ~[?:?]
+	at java.awt.Window.<init>(Window.java:548) ~[?:?]
+	at java.awt.Frame.<init>(Frame.java:423) ~[?:?]
+	at java.awt.Frame.<init>(Frame.java:388) ~[?:?]
+	at javax.swing.SwingUtilities$SharedOwnerFrame.<init>(SwingUtilities.java:1919) ~[?:?]
+	at javax.swing.SwingUtilities.getSharedOwnerFrame(SwingUtilities.java:1995) ~[?:?]
+	at javax.swing.JDialog.<init>(JDialog.java:273) ~[?:?]
+	at javax.swing.JDialog.<init>(JDialog.java:207) ~[?:?]
+	at javax.swing.JDialog.<init>(JDialog.java:155) ~[?:?]
+	at org.apache.jmeter.SplashScreen.<init>(SplashScreen.java:52) ~[ApacheJMeter_core.jar:5.4]
+	at org.apache.jmeter.JMeter.startGui(JMeter.java:387) ~[ApacheJMeter_core.jar:5.4]
+	at org.apache.jmeter.JMeter.start(JMeter.java:560) [ApacheJMeter_core.jar:5.4]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:254) [ApacheJMeter.jar:5.4]
