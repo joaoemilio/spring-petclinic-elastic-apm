@@ -1,13 +1,11 @@
 FROM node:10.19
 
 WORKDIR /usr/src/
-RUN git clone https://github.com/joaoemilio/spring-petclinic-elastic-apm.git
+RUN git clone https://github.com/joaoemilio/spring-petclinic-elastic-apm.git /usr/src/spring-petclinic-elastic-apm
 ENV PATH /usr/src/spring-petclinic-elastic-apm/frontend_client_server/client/node_modules/.bin:$PATH
 
-WORKDIR /usr/src/spring-petclinic-elastic-apm/frontend_client_server/client
-RUN npm install
-RUN npm install --unsafe-perm
-RUN npm run build:prod
+WORKDIR /usr/src/spring-petclinic-elastic-apm/frontend_client_server/client/
+RUN npm install && npm install --unsafe-perm && npm run build:prod
 
 ENV NODE_ENV=production
 WORKDIR /usr/src/spring-petclinic-elastic-apm/frontend_client_server/server

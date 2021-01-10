@@ -4,19 +4,19 @@ chmod 0666 /source_maps/*.map
 
 #wait for apm-server to come alive
 until  $(curl -s -o /tmp/apm_health_check.out --head --fail "${ELASTIC_APM_SERVER_URL}/"); do
-    echo "Waiting for APM Server..."
+    echo "Waiting for APM Server... ${ELASTIC_APM_SERVER_URL}"
   sleep 1
 done
 #wait for es to be available as source maps will go there from the apm-server
 shopt -s nocasematch
 if [[ "${INSECURE_SSL}" == "true" ]]; then
     until curl -u "${ELASTICSEARCH_USERNAME}:${ELASTICSEARCH_PASSWORD}" -s "${ELASTICSEARCH_URL}/_cat/health" "--insecure" -o /dev/null; do
-        echo "Waiting for Elasticsearch..."
+        echo "Waiting for Elasticsearch...${ELASTICSEARCH_URL}"
         sleep 1
     done
 else
     until curl -u "${ELASTICSEARCH_USERNAME}:${ELASTICSEARCH_PASSWORD}" -s "${ELASTICSEARCH_URL}/_cat/health" -o /dev/null; do
-        echo "Waiting for Elasticsearch..."
+        echo "Waiting for Elasticsearch...${ELASTICSEARCH_URL}"
         sleep 1
     done
 fi
