@@ -1,0 +1,17 @@
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/userService/AbstractUserServiceTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/UserRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/userService/UserServiceJpaTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/PetRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/VisitRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/PetTypeRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/OwnerRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/clinicService/ClinicServiceJdbcTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/userService/UserServiceJdbcTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/SpecialtyRestControllerTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/clinicService/ClinicServiceSpringDataJpaTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/clinicService/AbstractClinicServiceTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/userService/UserServiceSpringDataJpaTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/clinicService/ApplicationTestConfig.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/service/clinicService/ClinicServiceJpaTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java
+/mnt/c/git/spring-petclinic/java_service/src/test/java/org/springframework/samples/petclinic/rest/VetRestControllerTests.java

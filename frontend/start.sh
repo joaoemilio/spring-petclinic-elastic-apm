@@ -1,1 +1,0 @@
-sudo docker run -p 3000:3000 -e ELASTIC_APM_SERVER_URL=https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com -e ELASTICSEARCH_USERNAME=elastic -e ELASTICSEARCH_PASSWORD=8t5Emasmzc2ply0jEObwsMr6 -e ELASTIC_APM_SERVICE_NAME=petclinic-frontend -e ELASTIC_APM_SECRET_TOKEN=fUdDairnKQ5L6CUq8U petclinic-frontend
