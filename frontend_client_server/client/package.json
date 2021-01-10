@@ -1,9 +1,9 @@
 {
   "name": "spring-petclinic-reactjs",
   "version": "0.0.1",
-  "description": "Spring Boot Pet Clinic Sample Application with React Frontend and Elastic. Forked from https://github.com/spring-petclinic/spring-petclinic-reactjs",
+  "description": "Spring Boot Pet Clinic Sample Application with React Frontend and Elastic. Forked from https://github.com/elastic/spring-petclinic",
   "main": "index.js",
-  "repository": "https://github.com/elastic/spring-petclinic",
+  "repository": "https://github.com/joaoemilio/spring-petclinic-elastic-apm",
   "scripts": {
     "postinstall": "typings install",
     "install-types": "typings install",
