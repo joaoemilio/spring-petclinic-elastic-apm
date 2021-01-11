@@ -50,7 +50,7 @@ public class AlertRestController {
 		Transaction transaction = ElasticApm.startTransaction();
 		Collection<Alert> alerts = null;
 		try {
-			transaction.setName("MyController#myAction");
+			transaction.setName("AlertService.getAlert()");
 			transaction.setType(Transaction.TYPE_REQUEST);
 
 			alerts = this.alertService.findAllAlerts();

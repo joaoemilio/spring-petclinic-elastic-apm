@@ -1,6 +1,6 @@
 var config = {
-  apm_server: process.env.ELASTIC_APM_SERVER_URL || 'https://localhost:8200',
-  apm_server_js: process.env.ELASTIC_APM_SERVER_JS_URL || 'https://localhost:8200',
+  apm_server: process.env.ELASTIC_APM_SERVER_URL || 'https://localhost:8300',
+  apm_server_js: process.env.ELASTIC_APM_SERVER_JS_URL || 'https://localhost:8400',
   apm_service_name: process.env.ELASTIC_APM_SERVICE_NAME || 'petclinic-node',
   apm_client_service_name: process.env.ELASTIC_APM_CLIENT_SERVICE_NAME || 'petclinic-react',
   apm_service_version: process.env.ELASTIC_APM_SERVICE_VERSION || '1.0.0',

@@ -21,19 +21,20 @@ kind: Deployment
 metadata:
   name: petclinic-java
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: petclinic
+      app: petclinic-java
   template:
     metadata:
       labels:
-        app: petclinic
+        app: petclinic-java
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
       - name: petclinic-java
-        image: joaoemilio/petclinic-java-elastic-apm:v1.0.3
+        image: joaoemilio/petclinic-java-elastic-apm:v1.0.4
         ports:
         - containerPort: 8080
         env:
@@ -43,6 +44,10 @@ spec:
           value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
         - name: ELASTIC_APM_SECRET_TOKEN
           value: "fUdDairnKQ5L6CUq8U"
+        - name: PYTHON_SERVICE_URL
+          value: "http://petclinic-python-service:8082/"
+        - name: PHP_SERVICE_URL
+          value: "http://petclinic-php-service:8083/"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
@@ -67,7 +72,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: petclinic
+    app: petclinic-java
   ports:
   - name: http
     port: 8080

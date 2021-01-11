@@ -1,2 +1,4 @@
-elastic-apm[flask]
-Flask==0.10.1
+virtualenv 
+elastic-apm[flask] 
+flask 
+requests

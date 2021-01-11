@@ -23,11 +23,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: petclinic
+      app: petclinic-python
   template:
     metadata:
       labels:
-        app: petclinic
+        app: petclinic-python
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
@@ -70,7 +70,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-python
+  name: petclinic-python-service
 spec:
   type: ClusterIP
   selector:

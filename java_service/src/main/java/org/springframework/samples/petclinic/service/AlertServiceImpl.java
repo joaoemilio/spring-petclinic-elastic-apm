@@ -45,14 +45,14 @@ public class AlertServiceImpl implements AlertService {
 	public Collection<Alert> findAllAlerts() throws DataAccessException {
 
 		try{
-			final String uri = "http://localhost:5000/";
+			final String uri = System.getenv().getOrDefault("PYTHON_SERVICE_URL", "http://localhost:5000/");
 
 			RestTemplate restTemplate = new RestTemplate();
 			String result = restTemplate.getForObject(uri, String.class);
 
 			System.out.println(result);
 
-			String url_php = "http://localhost:9080/health.php";
+			String url_php = System.getenv().getOrDefault("PHP_SERVICE_URL", "http://localhost:8083/health.php");
 			result = restTemplate.getForObject(url_php, String.class);
 
 			System.out.println(result);

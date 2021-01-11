@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="2.303" tests="12" errors="0" skipped="0" failures="0">
+<testsuite name="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="2.072" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.9.1+1-Ubuntu-0ubuntu1.20.04"/>
@@ -41,7 +41,7 @@
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher compile package"/>
     <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -58,16 +58,16 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetAllPetTypesSuccessAsOwnerAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.186"/>
-  <testcase name="testGetPetTypeNotFound" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.162"/>
-  <testcase name="testDeletePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.204"/>
-  <testcase name="testUpdatePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.264"/>
-  <testcase name="testUpdatePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.22"/>
-  <testcase name="testCreatePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.199"/>
-  <testcase name="testGetAllPetTypesNotFound" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.166"/>
-  <testcase name="testDeletePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.185"/>
-  <testcase name="testGetPetTypeSuccessAsVetAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.158"/>
-  <testcase name="testGetAllPetTypesSuccessAsVetAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.17"/>
-  <testcase name="testGetPetTypeSuccessAsOwnerAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.184"/>
-  <testcase name="testCreatePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.205"/>
+  <testcase name="testGetAllPetTypesSuccessAsOwnerAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.163"/>
+  <testcase name="testGetPetTypeNotFound" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.145"/>
+  <testcase name="testDeletePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.173"/>
+  <testcase name="testUpdatePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.222"/>
+  <testcase name="testUpdatePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.219"/>
+  <testcase name="testCreatePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.184"/>
+  <testcase name="testGetAllPetTypesNotFound" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.169"/>
+  <testcase name="testDeletePetTypeSuccess" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.158"/>
+  <testcase name="testGetPetTypeSuccessAsVetAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.15"/>
+  <testcase name="testGetAllPetTypesSuccessAsVetAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.154"/>
+  <testcase name="testGetPetTypeSuccessAsOwnerAdmin" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.161"/>
+  <testcase name="testCreatePetTypeError" classname="org.springframework.samples.petclinic.rest.PetTypeRestControllerTests" time="0.174"/>
 </testsuite>

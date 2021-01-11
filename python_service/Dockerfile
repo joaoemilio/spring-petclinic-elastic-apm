@@ -8,9 +8,7 @@ COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
-RUN pip3 install virtualenv 
-RUN pip3 install elastic-apm[flask] 
-RUN pip3 install flask requests
+RUN pip3 install -r requirements.txt
 
 COPY . /app
 

@@ -33,18 +33,20 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: petclinic-frontend
-        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.4
+        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.6
         ports:
         - containerPort: 4000
         env:
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic-frontend"        
+        - name: ELASTIC_APM_SERVER_JS_URL
+          value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
         - name: ELASTIC_APM_SERVER_URL
           value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
         - name: ELASTIC_APM_SECRET_TOKEN
           value: "fUdDairnKQ5L6CUq8U"
         - name: API_SERVER
-          value: http://petclinic-java-service:8080/
+          value: http://petclinic-java-service.default.svc.cluster.local:8080/
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
