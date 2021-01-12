@@ -12,9 +12,10 @@ def create_app(config_class=Config):
     #app.elasticsearch = Elasticsearch(hosts=[app.config['ELASTICSEARCH_URL']], http_auth=(app.config['ELASTICSEARCH_USER'],app.config['ELASTICSEARCH_PASSWORD']), timeout=60, use_ssl=use_ssl, verify_certs=verify_certs)
 
     app.elasticsearch = Elasticsearch(
-        cloud_id="falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5",
-        http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe"),
+        cloud_id= app.config['ES_CLOUD_ID'],
+        http_auth=("elastic", app.config['ES_CLOUD_PASSWORD']),
     )
+
     app.register_blueprint(api_bp, url_prefix='/api')
     apm = ElasticAPM(app)
     return app

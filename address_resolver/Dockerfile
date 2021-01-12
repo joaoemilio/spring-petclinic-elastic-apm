@@ -9,8 +9,8 @@ ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /usr/src/
 COPY build.txt .
-RUN echo "15" && git clone https://github.com/elastic/spring-petclinic.git
-WORKDIR /usr/src/spring-petclinic/address_resolver/src
+RUN echo "17" && git clone https://github.com/joaoemilio/spring-petclinic-elastic-apm.git
+WORKDIR /usr/src/spring-petclinic-elastic-apm/address_resolver/src
 RUN pip3 install gunicorn json-logging-py 
 RUN pip3 install --no-cache-dir -r requirements.txt
 

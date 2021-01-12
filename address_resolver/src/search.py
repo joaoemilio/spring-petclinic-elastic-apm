@@ -1,8 +1,6 @@
 import json
 from flask import current_app
 import pystache
-from elasticsearch import Elasticsearch
-
 
 class StateSearch():
     query_renderer = pystache.Renderer()
@@ -46,11 +44,7 @@ class CitySearch():
     def query(self):
 
         query = json.loads(self.query_renderer.render(self))
-        elasticsearch = Elasticsearch(
-            cloud_id="falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5",
-            http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe"),
-        )
-        results = elasticsearch.search(index=current_app.config['ADDRESS_INDEX'], doc_type='_doc', body=query)
+        results = current_app.elasticsearch.search(index=current_app.config['ADDRESS_INDEX'], doc_type='_doc', body=query)
         cities = [result["key"] for result in results["aggregations"]["city"]["buckets"]]
         if len(cities) == 0:
             query = json.loads(self.query_renderer.render_path('cities_for_state.mustache',self))
