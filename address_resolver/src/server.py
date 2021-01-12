@@ -14,8 +14,8 @@ def create_app(config_class=Config):
     print( "cloud id : " + app.config['ES_CLOUD_ID'] )
 
     app.elasticsearch = Elasticsearch(
-        cloud_id=app.config['ES_CLOUD_ID'],
-        http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe" ),
+        cloud_id="falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5",
+        http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe"),
     )
     app.register_blueprint(api_bp, url_prefix='/api')
     apm = ElasticAPM(app)
