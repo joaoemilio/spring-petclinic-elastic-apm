@@ -15,7 +15,7 @@ def create_app(config_class=Config):
 
     app.elasticsearch = Elasticsearch(
         cloud_id=app.config['ES_CLOUD_ID'],
-        http_auth=("elastic", app.config['ES_CLOUD_PASSWORD'] ),
+        http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe" ),
     )
     app.register_blueprint(api_bp, url_prefix='/api')
     apm = ElasticAPM(app)
