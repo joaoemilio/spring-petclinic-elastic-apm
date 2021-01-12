@@ -2,6 +2,8 @@ import os
 
 
 class Config(object):
+    ES_CLOUD_ID = os.environ.get('ES_CLOUD_ID')
+    ES_CLOUD_AUTH = os.environ.get('ES_CLOUD_AUTH')
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL','localhost:9200')
     ELASTICSEARCH_USER = os.getenv('ELASTICSEARCH_USER','elastic')
     ELASTICSEARCH_PASSWORD = os.getenv('ELASTICSEARCH_PASSWORD', 'changeme')

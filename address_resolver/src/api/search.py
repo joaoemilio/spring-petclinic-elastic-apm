@@ -21,6 +21,7 @@ def find_state():
     if request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             req_data = request.get_json()
+            print(req_data)
             missing = check_parameters(req_data, ["zip_code"])
             if len(missing) > 0:
                 return jsonify({"success": False, "message": missing}), 404
