@@ -1,6 +1,6 @@
 const { Chromeless } = require('chromeless')
 
-var baseUrl = process.env.PETCLINIC_BASE_URL || 'http://www.opbeans.com';
+var baseUrl = process.env.PETCLINIC_BASE_URL || 'http://kubernetes.docker.internal';
 var url = baseUrl
 var NUM_IPS = 1000;
 var RANDOM_IPS = loadRandomIPs();

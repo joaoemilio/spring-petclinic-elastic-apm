@@ -52,8 +52,8 @@ public class AlertServiceImpl implements AlertService {
 
 			System.out.println(result);
 
-			String url_php = System.getenv().getOrDefault("PHP_SERVICE_URL", "http://localhost:8083/health.php");
-			result = restTemplate.getForObject(url_php, String.class);
+			String url_php = System.getenv().getOrDefault("PHP_SERVICE_URL", "http://localhost:8082");
+			result = restTemplate.getForObject(url_php + "/apm.php", String.class);
 
 			System.out.println(result);
 

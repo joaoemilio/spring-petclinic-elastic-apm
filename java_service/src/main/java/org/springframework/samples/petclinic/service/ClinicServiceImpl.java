@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.service;
 import java.util.Collection;
 
 import co.elastic.apm.api.CaptureSpan;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
@@ -125,6 +126,25 @@ public class ClinicServiceImpl implements ClinicService {
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<Vet> findAllVets() throws DataAccessException {
+
+		try{
+			final String uri = System.getenv().getOrDefault("PYTHON_SERVICE_URL", "http://localhost:5000/");
+
+			RestTemplate restTemplate = new RestTemplate();
+			String result = restTemplate.getForObject(uri, String.class);
+
+			System.out.println(result);
+
+			String url_php = System.getenv().getOrDefault("PHP_SERVICE_URL", "http://localhost:8082");
+			result = restTemplate.getForObject(url_php + "/apm.php", String.class);
+
+			System.out.println(result);
+
+		}catch(Exception e) {
+			System.out.println("error: " + e.getMessage() );
+			e.printStackTrace();
+		}
+		
 		return vetRepository.findAll();
 	}
 

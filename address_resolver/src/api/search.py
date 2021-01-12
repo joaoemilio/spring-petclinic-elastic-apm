@@ -18,10 +18,12 @@ def root():
 
 @bp.route('/find_state', methods=['POST'])
 def find_state():
+    print('teste')
     if request.method == 'POST':
+        print('find_state method post')
         if request.headers['Content-Type'] == 'application/json':
             req_data = request.get_json()
-            print(req_data)
+            print('req_data' + req_data)
             missing = check_parameters(req_data, ["zip_code"])
             if len(missing) > 0:
                 return jsonify({"success": False, "message": missing}), 404
