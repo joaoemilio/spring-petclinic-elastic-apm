@@ -42,6 +42,7 @@ class CitySearch():
         return self.zip_code
 
     def query(self):
+
         query = json.loads(self.query_renderer.render(self))
         results = current_app.elasticsearch.search(index=current_app.config['ADDRESS_INDEX'], doc_type='_doc', body=query)
         cities = [result["key"] for result in results["aggregations"]["city"]["buckets"]]

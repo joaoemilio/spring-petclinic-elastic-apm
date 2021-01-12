@@ -11,12 +11,10 @@ def create_app(config_class=Config):
     verify_certs = app.config['ELASTICSEARCH_VALIDATE_CERTS'].lower() == "true"
     #app.elasticsearch = Elasticsearch(hosts=[app.config['ELASTICSEARCH_URL']], http_auth=(app.config['ELASTICSEARCH_USER'],app.config['ELASTICSEARCH_PASSWORD']), timeout=60, use_ssl=use_ssl, verify_certs=verify_certs)
 
-    app.logger.info( "cloud id : " + app.config['ES_CLOUD_ID'] )
-
     app.elasticsearch = Elasticsearch(
-      [ 
-          "elastic:KD9wTa71rUWxSTwagtBsKsLe@https://fecf8161fad9496d88475e38af6aea15.us-central1.gcp.cloud.es.io:9243" 
-    ])
+        cloud_id="falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5",
+        http_auth=("elastic", "KD9wTa71rUWxSTwagtBsKsLe"),
+    )
     app.register_blueprint(api_bp, url_prefix='/api')
     apm = ElasticAPM(app)
     return app
