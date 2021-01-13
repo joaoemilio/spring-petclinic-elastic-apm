@@ -123,6 +123,7 @@ public class ClinicServiceImpl implements ClinicService {
 		return vet;
 	}
 
+	@CaptureSpan
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<Vet> findAllVets() throws DataAccessException {

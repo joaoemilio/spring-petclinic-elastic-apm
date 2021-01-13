@@ -23,32 +23,34 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: petclinic-frontend
+      app: petclinic
   template:
     metadata:
       labels:
-        app: petclinic-frontend
+        app: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
       - name: petclinic-frontend
-        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.6
+        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.7
         ports:
         - containerPort: 4000
         env:
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic-frontend"        
         - name: ELASTIC_APM_SERVER_JS_URL
-          value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
+          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
+          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "fUdDairnKQ5L6CUq8U"
+          value: "2uSbzDmNmwZZwk9C9x"
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "onprem"
+          value: "falabella"
         - name: API_SERVER
           value: http://petclinic-java-service.default.svc.cluster.local:8080/
+        - name: ADDRESS_SERVER
+          value: http://petclinic-address-resolver:5000
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
@@ -73,31 +75,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: petclinic-frontend
+    app: petclinic
   ports:
   - name: http
     port: 4000
     targetPort: 4000
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: petclinic-ingress
-spec:
-  rules:
-    - http:
-        paths:
-        - path: "/"
-          pathType: "Prefix"
-          backend:
-            service: 
-              name: petclinic-frontend
-              port:
-                number: 4000
-        - path: "/petclinic/api/alerts/alert"
-          pathType: "Exact"
-          backend:
-            service: 
-              name: petclinic-java-service
-              port: 
-                number: 8080

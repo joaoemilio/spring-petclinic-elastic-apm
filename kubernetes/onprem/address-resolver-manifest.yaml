@@ -19,45 +19,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-php
+  name: petclinic-address-resolver
 spec:
   selector:
     matchLabels:
-      app: petclinic-php
+      app: petclinic-address-resolver
   template:
     metadata:
       labels:
-        app: petclinic-php
+        app: petclinic-address-resolver
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-php
-        image: joaoemilio/petclinic-php-elastic-apm:v1.0.1
+      - name: petclinic-address-resolver
+        image: joaoemilio/petclinic-address-resolver-elastic-apm:v1.0.18
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "php-service"        
+          value: "address-resolver-service"        
         - name: ELASTIC_APM_SERVER_URL
           value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
         - name: ELASTIC_APM_SECRET_TOKEN
           value: "2uSbzDmNmwZZwk9C9x"
+        - name: ES_CLOUD_ID
+          value: "falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5"
+        - name: ES_CLOUD_PASSWORD
+          value: "KD9wTa71rUWxSTwagtBsKsLe"
         - name: ELASTIC_APM_ENVIRONMENT
           value: "falabella"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/health.php"
-            port: 80
+            path: "/api/"
+            port: 5000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/health.php"
-            port: 80
+            path: "/api/"
+            port: 5000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
@@ -72,12 +76,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-php-service
+  name: petclinic-address-resolver
 spec:
   type: ClusterIP
   selector:
-    app: petclinic-php
+    app: petclinic-address-resolver
   ports:
   - name: http
-    port: 8082
-    targetPort: 80
+    port: 5000
+    targetPort: 5000

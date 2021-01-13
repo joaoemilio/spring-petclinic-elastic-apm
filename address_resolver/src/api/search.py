@@ -18,7 +18,6 @@ def root():
 
 @bp.route('/find_state', methods=['POST'])
 def find_state():
-    print('teste')
     if request.method == 'POST':
         print('find_state method post')
         if request.headers['Content-Type'] == 'application/json':

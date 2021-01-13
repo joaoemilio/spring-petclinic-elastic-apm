@@ -34,18 +34,18 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: petclinic-java
-        image: joaoemilio/petclinic-java-elastic-apm:v1.0.5
+        image: joaoemilio/petclinic-java-elastic-apm:v1.0.8
         ports:
         - containerPort: 8080
         env:
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic-java"        
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com"
+          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "fUdDairnKQ5L6CUq8U"
+          value: "2uSbzDmNmwZZwk9C9x"
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "onprem"
+          value: "falabella"
         - name: PYTHON_SERVICE_URL
           value: "http://petclinic-python-service:8082/"
         - name: PHP_SERVICE_URL

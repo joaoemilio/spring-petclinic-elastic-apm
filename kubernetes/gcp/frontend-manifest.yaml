@@ -49,6 +49,8 @@ spec:
           value: "gcp"
         - name: API_SERVER
           value: http://petclinic-java-service.default.svc.cluster.local:8080/
+        - name: ADDRESS_SERVER
+          value: http://petclinic-address-resolver:5000
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:

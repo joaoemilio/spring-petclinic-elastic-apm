@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petclinic-ingress
+spec:
+  rules:
+    - http:
+        paths:
+        - path: "/"
+          pathType: "Prefix"
+          backend:
+            service: 
+              name: petclinic-frontend
+              port:
+                number: 4000
+        - path: "/petclinic/api/alerts/alert"
+          pathType: "Exact"
+          backend:
+            service: 
+              name: petclinic-java-service
+              port: 
+                number: 8080

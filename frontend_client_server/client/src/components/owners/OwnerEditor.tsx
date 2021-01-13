@@ -209,6 +209,7 @@ export default class OwnerEditor extends React.Component<IOwnerEditorProps, IOwn
       if (data) {
         let cities = data.cities ? data.cities.map(city => ({ value: city, name: city })) : [];
         cities.unshift({'value': '', 'name': ''});
+        console.debug( cities );
         APMService.getInstance().endTransaction(true);
         this.setState({
           cities: cities
