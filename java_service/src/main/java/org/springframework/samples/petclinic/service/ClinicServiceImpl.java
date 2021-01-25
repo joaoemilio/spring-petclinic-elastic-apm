@@ -134,12 +134,8 @@ public class ClinicServiceImpl implements ClinicService {
 			RestTemplate restTemplate = new RestTemplate();
 			String result = restTemplate.getForObject(uri, String.class);
 
-			System.out.println(result);
-
 			String url_php = System.getenv().getOrDefault("PHP_SERVICE_URL", "http://localhost:8082");
 			result = restTemplate.getForObject(url_php + "/apm.php", String.class);
-
-			System.out.println(result);
 
 		}catch(Exception e) {
 			System.out.println("error: " + e.getMessage() );

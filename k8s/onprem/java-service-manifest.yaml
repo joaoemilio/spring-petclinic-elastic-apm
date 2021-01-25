@@ -19,69 +19,75 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-address-resolver
+  name: petclinic-java
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: petclinic-address-resolver
+      app: petclinic-java
   template:
     metadata:
       labels:
-        app: petclinic-address-resolver
+        app: petclinic-java
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-address-resolver
-        image: joaoemilio/petclinic-address-resolver-elastic-apm:v1.0.18
+      - name: petclinic-java
+        image: joaoemilio/petclinic-java-elastic-apm:v1.0.8
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "address-resolver-service"        
+          value: "petclinic-java"        
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
-        - name: ES_CLOUD_ID
-          value: "falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5"
-        - name: ES_CLOUD_PASSWORD
-          value: "KD9wTa71rUWxSTwagtBsKsLe"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "falabella"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: "dev"
+        - name: PYTHON_SERVICE_URL
+          value: "http://petclinic-python-service:8082/"
+        - name: PHP_SERVICE_URL
+          value: "http://petclinic-php-service:8082"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/api/"
-            port: 5000
+            path: "/petclinic/health/"
+            port: 8080
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/api/"
-            port: 5000
+            path: "/petclinic/health/"
+            port: 8080
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
-        resources:
-          requests:
-            cpu: 100m
-            memory: 64Mi
-          limits:
-            cpu: 200m
-            memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-address-resolver
+  name: petclinic-java-service
 spec:
   type: ClusterIP
   selector:
-    app: petclinic-address-resolver
+    app: petclinic-java
   ports:
   - name: http
-    port: 5000
-    targetPort: 5000
+    port: 8080
+    targetPort: 8080

@@ -179,6 +179,8 @@ export default class OwnerEditor extends React.Component<IOwnerEditorProps, IOwn
       const requestUrl = url('api/find_state');
       this.xhr_address_service_fetch(requestUrl, { zip_code: value }, (data) => {
         if (data) {
+          console.log('States');
+          JSON.stringify(data);
           let states = data.states ? data.states.map(state => ({ value: state, name: state })) : [];
           const modifiedOwner = Object.assign({}, owner, { [name]: value, ['state']: '', ['city']: '' });
           states.unshift({'value': '', 'name': ''});

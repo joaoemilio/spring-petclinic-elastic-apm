@@ -19,64 +19,87 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-frontend
+  name: petclinic-address-resolver
 spec:
   selector:
     matchLabels:
-      app: petclinic
+      app: petclinic-address-resolver
   template:
     metadata:
       labels:
-        app: petclinic
+        app: petclinic-address-resolver
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-frontend
-        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.7
+      - name: petclinic-address-resolver
+        image: joaoemilio/petclinic-address-resolver-elastic-apm:v1.0.21
         ports:
-        - containerPort: 4000
+        - containerPort: 5000
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "petclinic-frontend"        
-        - name: ELASTIC_APM_SERVER_JS_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          value: "address-resolver-service"        
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "falabella"
-        - name: API_SERVER
-          value: http://petclinic-java-service.default.svc.cluster.local:8080/
-        - name: ADDRESS_SERVER
-          value: http://petclinic-address-resolver:5000
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
+        - name: ES_CLOUD_ID
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: CLOUD_ID
+        - name: ES_CLOUD_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: CLOUD_PASSWORD
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: "dev"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/healthcheck"
-            port: 4000
+            path: "/api/"
+            port: 5000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/healthcheck"
-            port: 4000
+            path: "/api/"
+            port: 5000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-frontend
+  name: petclinic-address-resolver
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
-    app: petclinic
+    app: petclinic-address-resolver
   ports:
   - name: http
-    port: 4000
-    targetPort: 4000
+    port: 5000
+    targetPort: 5000

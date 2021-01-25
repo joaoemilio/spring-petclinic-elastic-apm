@@ -19,45 +19,57 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-python
+  name: petclinic-php
 spec:
   selector:
     matchLabels:
-      app: petclinic-python
+      app: petclinic-php
   template:
     metadata:
       labels:
-        app: petclinic-python
+        app: petclinic-php
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-python
-        image: joaoemilio/petclinic-python-elastic-apm:v1.0.0
+      - name: petclinic-php
+        image: joaoemilio/petclinic-php-elastic-apm:v1.0.1
         ports:
         - containerPort: 8080
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "python-service"        
+          value: "php-service"        
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "gcp"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: "dev"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/"
-            port: 8080
+            path: "/health.php"
+            port: 80
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/"
-            port: 8080
+            path: "/health.php"
+            port: 80
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
@@ -72,12 +84,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-python-service
+  name: petclinic-php-service
 spec:
   type: ClusterIP
   selector:
-    app: petclinic-python
+    app: petclinic-php
   ports:
   - name: http
     port: 8082
-    targetPort: 8080
+    targetPort: 80

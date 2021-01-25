@@ -1,13 +1,11 @@
 {
   "aliases": {},
   "mappings": {
-    "doc": {
-      "properties": {
+    "properties": {
         "zip_code": {
           "type": "keyword"
         }
       }
-    }
   },
   "settings": {
     "index": {

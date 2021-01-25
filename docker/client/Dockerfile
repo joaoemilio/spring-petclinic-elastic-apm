@@ -1,7 +1,8 @@
 FROM node:10.19
 
 WORKDIR /usr/src/
-RUN git clone https://github.com/joaoemilio/spring-petclinic-elastic-apm.git /usr/src/spring-petclinic-elastic-apm
+COPY build.txt .
+RUN cat build.txt && git clone https://github.com/joaoemilio/spring-petclinic-elastic-apm.git /usr/src/spring-petclinic-elastic-apm
 ENV PATH /usr/src/spring-petclinic-elastic-apm/frontend_client_server/client/node_modules/.bin:$PATH
 
 WORKDIR /usr/src/spring-petclinic-elastic-apm/frontend_client_server/client/

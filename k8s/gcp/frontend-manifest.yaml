@@ -19,50 +19,64 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-java
+  name: petclinic-frontend
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: petclinic-java
+      app: petclinic
   template:
     metadata:
       labels:
-        app: petclinic-java
+        app: petclinic
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-java
-        image: joaoemilio/petclinic-java-elastic-apm:v1.0.8
+      - name: petclinic-frontend
+        image: joaoemilio/petclinic-reactjs-nodejs-elastic-apm:v1.0.7
         ports:
-        - containerPort: 8080
+        - containerPort: 4000
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "petclinic-java"        
+          value: "petclinic-frontend"        
+        - name: ELASTIC_APM_SERVER_JS_URL
+          valueFrom: 
+            configMapKeyRef: 
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "gcp"
-        - name: PYTHON_SERVICE_URL
-          value: "http://petclinic-python-service:8082/"
-        - name: PHP_SERVICE_URL
-          value: "http://petclinic-php-service:8082"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
+        - name: API_SERVER
+          value: http://petclinic-java-service.default.svc.cluster.local:8080/
+        - name: ADDRESS_SERVER
+          value: http://petclinic-address-resolver:5000
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/petclinic/health/"
-            port: 8080
+            path: "/healthcheck"
+            port: 4000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/petclinic/health/"
-            port: 8080
+            path: "/healthcheck"
+            port: 4000
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
@@ -70,12 +84,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-java-service
+  name: petclinic-frontend
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
-    app: petclinic-java
+    app: petclinic
   ports:
   - name: http
-    port: 8080
-    targetPort: 8080
+    port: 4000
+    targetPort: 4000

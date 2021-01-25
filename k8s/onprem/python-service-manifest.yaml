@@ -19,49 +19,57 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petclinic-address-resolver
+  name: petclinic-python
 spec:
   selector:
     matchLabels:
-      app: petclinic-address-resolver
+      app: petclinic-python
   template:
     metadata:
       labels:
-        app: petclinic-address-resolver
+        app: petclinic-python
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: petclinic-address-resolver
-        image: joaoemilio/petclinic-address-resolver-elastic-apm:v1.0.18
+      - name: petclinic-python
+        image: joaoemilio/petclinic-python-elastic-apm:v1.0.0
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         env:
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "address-resolver-service"        
+          value: "python-service"        
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
-        - name: ES_CLOUD_ID
-          value: "falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5"
-        - name: ES_CLOUD_PASSWORD
-          value: "KD9wTa71rUWxSTwagtBsKsLe"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "gcp"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
+        - name: ELASTIC_APM_ENVIRONMENT
+          value: "dev"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/api/"
-            port: 5000
+            path: "/"
+            port: 8080
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-readiness-probe"
         livenessProbe:
           initialDelaySeconds: 10
           httpGet:
-            path: "/api/"
-            port: 5000
+            path: "/"
+            port: 8080
             httpHeaders:
             - name: "Cookie"
               value: "shop_session-id=x-liveness-probe"
@@ -76,12 +84,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petclinic-address-resolver
+  name: petclinic-python-service
 spec:
   type: ClusterIP
   selector:
-    app: petclinic-address-resolver
+    app: petclinic-python
   ports:
   - name: http
-    port: 5000
-    targetPort: 5000
+    port: 8082
+    targetPort: 8080

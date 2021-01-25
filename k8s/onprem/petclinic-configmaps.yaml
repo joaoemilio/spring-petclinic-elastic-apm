@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: petclinic-configmap
+data:
+  # property-like keys; each key maps to a simple value
+  ELASTIC_APM_ENVIRONMENT: "dev"
+  ELASTIC_APM_SECRET_TOKEN: "o69z6aZdOj1knttvCI"
+  ELASTIC_APM_SERVER_URL: "https://82e26fde987d44cfb1771724f8fc6b05.apm.southamerica-east1.gcp.elastic-cloud.com"
+  CLOUD_ID: "webinar-observability:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ5YmI5MjliYmNjNjg0ODUwOTM3MzFhODNhNmJjNDE3MSRiYjNmMjQ4ZGJhY2E0NGU2ODFiZWI2ODcwNGFjNmQwZQ=="
+  CLOUD_AUTH: "elastic:EtvdZtekqi3pxTlgangyM7kg"  
+  CLOUD_PASSWORD: "EtvdZtekqi3pxTlgangyM7kg"

@@ -28,6 +28,7 @@ spec:
     metadata:
       labels:
         app: petclinic
+        project: petclinic
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
@@ -40,13 +41,25 @@ spec:
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic-frontend"        
         - name: ELASTIC_APM_SERVER_JS_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom: 
+            configMapKeyRef: 
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://54c919547253466797f598eddcb97096.apm.us-central1.gcp.cloud.es.io"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SERVER_URL
         - name: ELASTIC_APM_SECRET_TOKEN
-          value: "2uSbzDmNmwZZwk9C9x"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_SECRET_TOKEN
         - name: ELASTIC_APM_ENVIRONMENT
-          value: "gcp"
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: ELASTIC_APM_ENVIRONMENT
         - name: API_SERVER
           value: http://petclinic-java-service.default.svc.cluster.local:8080/
         - name: ADDRESS_SERVER
