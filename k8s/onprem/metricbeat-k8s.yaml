@@ -156,9 +156,15 @@ spec:
         ]
         env:
         - name: ELASTIC_CLOUD_ID
-          value: falabella-observability:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGZlY2Y4MTYxZmFkOTQ5NmQ4ODQ3NWUzOGFmNmFlYTE1JDM5ZGE4OTNhZDQ2MDQ0MjU4ZTI4ZjFjZDJhZTg0NTU5
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: CLOUD_ID
         - name: ELASTIC_CLOUD_AUTH
-          value: elastic:KD9wTa71rUWxSTwagtBsKsLe
+          valueFrom:
+            configMapKeyRef:
+              name: petclinic-configmap
+              key: CLOUD_AUTH
         - name: NODE_NAME
           valueFrom:
             fieldRef:

@@ -56,8 +56,6 @@ spec:
             configMapKeyRef:
               name: petclinic-configmap
               key: ELASTIC_APM_ENVIRONMENT
-        - name: ELASTIC_APM_ENVIRONMENT
-          value: "dev"
         - name: PYTHON_SERVICE_URL
           value: "http://petclinic-python-service:8082/"
         - name: PHP_SERVICE_URL

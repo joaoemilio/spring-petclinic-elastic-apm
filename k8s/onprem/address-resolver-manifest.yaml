@@ -65,8 +65,6 @@ spec:
             configMapKeyRef:
               name: petclinic-configmap
               key: CLOUD_PASSWORD
-        - name: ELASTIC_APM_ENVIRONMENT
-          value: "dev"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:

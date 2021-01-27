@@ -1,0 +1,19 @@
+{
+    "aliases": {},
+    "mappings" : {
+  "properties": {
+        "date": {
+          "type" : "date",
+          "format": "dd/MM/yyyy"
+        },
+        "owner": {
+            "type": "keyword",
+            "ignore_above": 1024
+        },
+        "pet": {
+            "type": "keyword",
+            "ignore_above": 1024
+        }  
+    }
+  }
+}

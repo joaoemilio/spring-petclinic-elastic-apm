@@ -55,8 +55,6 @@ spec:
             configMapKeyRef:
               name: petclinic-configmap
               key: ELASTIC_APM_ENVIRONMENT
-        - name: ELASTIC_APM_ENVIRONMENT
-          value: "dev"
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
