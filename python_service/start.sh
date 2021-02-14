@@ -1,1 +1,0 @@
-docker run -p 5000:80 -e ELASTIC_APM_SERVER_URL=https://e502ba7b9aac4941a32d366eb20628c0.apm.southamerica-east1.gcp.elastic-cloud.com -e ELASTIC_APM_SERVICE_NAME=petclinic-python  -e ELASTIC_APM_SECRET_TOKEN=fUdDairnKQ5L6CUq8U petclinic-elastic-apm-alert:v1.0.0

@@ -1,4 +1,0 @@
-virtualenv 
-elastic-apm[flask] 
-flask 
-requests
