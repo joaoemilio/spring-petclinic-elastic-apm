@@ -3,10 +3,9 @@ kind: ConfigMap
 metadata:
   name: petclinic-configmap
 data:
-  # property-like keys; each key maps to a simple value
   ELASTIC_APM_ENVIRONMENT: "dev"
-  ELASTIC_APM_SECRET_TOKEN: "o69z6aZdOj1knttvCI"
-  ELASTIC_APM_SERVER_URL: "https://82e26fde987d44cfb1771724f8fc6b05.apm.southamerica-east1.gcp.elastic-cloud.com"
-  CLOUD_ID: "webinar-observability:c291dGhhbWVyaWNhLWVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQ5YmI5MjliYmNjNjg0ODUwOTM3MzFhODNhNmJjNDE3MSRiYjNmMjQ4ZGJhY2E0NGU2ODFiZWI2ODcwNGFjNmQwZQ=="
-  CLOUD_AUTH: "elastic:EtvdZtekqi3pxTlgangyM7kg"  
-  CLOUD_PASSWORD: "EtvdZtekqi3pxTlgangyM7kg"
+  ELASTIC_APM_SECRET_TOKEN: "djZfXCoO4MunBYe5w7"
+  ELASTIC_APM_SERVER_URL: "https://1a0d9bd3bc444f15a848c6cf6858d25b.apm.eastus2.azure.elastic-cloud.com"
+  CLOUD_ID: "elastic-observability:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo5MjQzJDNkZjVmYTM3MDkxNzRhYTZiZmQ3ODYxMGRkYjg4MGMzJDM0NjhhMzhlNDhkYTQ3Mzc5ZmYyYjM5NjY1OTg2ZDFi"
+  CLOUD_AUTH: "elastic:qquHldJUaMQXAJ5Amo9ac5yC"  
+  CLOUD_PASSWORD: "qquHldJUaMQXAJ5Amo9ac5yC"

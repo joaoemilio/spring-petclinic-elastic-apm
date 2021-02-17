@@ -10,8 +10,9 @@ class Config(object):
     ELASTICSEARCH_VALIDATE_CERTS = os.getenv('ELASTICSEARCH_VALIDATE_CERTS', 'true')
     ADDRESSES_PER_PAGE=int(os.getenv('ADDRESSES_PER_PAGE','25'))
     ADDRESS_INDEX = os.getenv('ADDRESS_INDEX','address')
+
     ELASTIC_APM = {
-        'SERVICE_NAME': os.getenv('ELASTIC_APM_SERVICE_NAME','address-finder'),
+        'SERVICE_NAME': os.getenv('ELASTIC_APM_SERVICE_NAME','address-service'),
         'SERVER_URL': os.getenv('ELASTIC_APM_SERVER_URL','http://localhost:8200'),
         'SERVICE_VERSION': os.getenv('ELASTIC_APM_SERVER_URL','1.0'),
         'COLLECT_LOCAL_VARIABLES': os.getenv('ELASTIC_APM_COLLECT_LOCAL_VARIABLES','all'),
